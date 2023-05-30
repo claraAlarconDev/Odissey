@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router'
 import HomeView from '../views/HomeView.vue'
-import SystemView from '../views/SystemView.vue'
+import PostsView from '../views/PostsView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 import DetailView from '../views/DetailView.vue'
 import LoginView from '../views/LoginView.vue'
@@ -15,7 +15,12 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: HomeView,
     },
     {
       path: '/login',
@@ -28,9 +33,9 @@ const router = createRouter({
       component: LogoutView
     },
     {
-      path: '/system',
-      name: 'system',
-      component: SystemView,
+      path: '/post',
+      name: 'post',
+      component: PostsView,
       meta: { RequireAuth: true }
     },
     {
