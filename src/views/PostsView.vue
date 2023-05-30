@@ -1,0 +1,121 @@
+<template>
+  <ion-page>
+    <ion-content>
+      <h2>Posts</h2>
+      <ion-list v-for="e in lista" :key="e.id">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{ e.id }}</ion-card-title>
+            <ion-card-subtitle>Arsenal</ion-card-subtitle>
+          </ion-card-header>
+
+          <ion-card-content>
+            El jugador se llama {{ e.nombre }}
+          </ion-card-content>
+          <ion-button fill="clear">Ver mas</ion-button>
+          <ion-button fill="clear">Calificar</ion-button>
+          <ion-fab>
+            <ion-fab-button>
+              <ion-icon :icon="add">Agregar a mis favoritos</ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </ion-card>
+      </ion-list>
+      <ion-input
+        v-model="jugador.id"
+        label="Numero"
+        placeholder="numero de jugador"
+      ></ion-input>
+      <ion-input
+        v-model="jugador.nombre"
+        label="Nombre"
+        placeholder="nombre de jugador"
+      ></ion-input>
+      <ion-button @click="agregarJugador">Agregar a la lista</ion-button>
+      <ion-button expand="block" @click="irAbout">Ir a About</ion-button>
+    </ion-content>
+  </ion-page>
+</template>
+
+<script>
+import {
+  IonPage,
+  IonButton,
+  IonInput,
+  IonList,
+  IonContent,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonFab,
+  IonFabButton,
+  IonIcon,
+} from "@ionic/vue";
+import { add } from "ionicons/icons";
+export default {
+  components: {
+    IonPage,
+    IonButton,
+    IonContent,
+    IonInput,
+    IonList,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardSubtitle,
+    IonCardTitle,
+    IonFab,
+    IonFabButton,
+    IonIcon,
+  },
+  setup() {
+      return { add };
+  },
+  data() {
+    return {
+      lista: [
+        { id: 1, nombre: "Filioll" },
+        { id: 5, nombre: "Gallego" },
+        { id: 9, nombre: "Kempes" },
+      ],
+      jugador: {},
+    };
+  },
+  methods: {
+    irAbout() {
+      this.$router.push("/about");
+    },
+    agregarJugador() {
+      this.lista.push({ ...this.jugador });
+      this.jugador = {};
+    },
+  },
+};
+</script>
+
+<style>
+/*
+ion-button {
+  --background: #250e4b;
+  --background-hover: #9ce0be;
+  --background-activated: #88f4be;
+  --background-focused: #88f4be;
+
+  --color: blue;
+
+  --border-radius: 0;
+  --border-color: #000;
+  --border-style: solid;
+  --border-width: 1px;
+
+  --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+
+  --ripple-color: deeppink;
+
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+}
+*/
+</style>
