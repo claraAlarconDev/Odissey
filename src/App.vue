@@ -40,7 +40,7 @@ export default {
     <ion-router-outlet />
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
-      <ion-tab-bar slot="bottom">
+      <ion-tab-bar>
         <ion-tab-button tab="about" href="/about">
           <ion-icon :icon="informationOutline"></ion-icon>
           <ion-label>About us</ion-label>
