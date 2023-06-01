@@ -41,11 +41,11 @@ export default {
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
       <ion-tab-bar>
-        <ion-tab-button tab="about" href="/about">
+        <ion-tab-button v-if="!isLogin" tab="about" href="/about">
           <ion-icon :icon="informationOutline"></ion-icon>
           <ion-label>About us</ion-label>
         </ion-tab-button>
-        <ion-tab-button tab="home" href="/home">
+        <ion-tab-button v-if="isLogin" tab="home" href="/home">
           <ion-icon :icon="homeOutline"></ion-icon>
           <ion-label>Home</ion-label>
         </ion-tab-button>
