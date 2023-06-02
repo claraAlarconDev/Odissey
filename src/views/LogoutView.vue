@@ -20,7 +20,7 @@ export default {
   methods: {
     unloger() {
       this.logout()
-      this.$router.push("/")
+      this.$router.push("/home")
     }
   }
 }
