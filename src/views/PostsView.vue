@@ -3,23 +3,7 @@
     <ion-content>
       <h2>Posts</h2>
       <ion-list v-for="e in lista" :key="e.id">
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>{{ e.id }}</ion-card-title>
-            <ion-card-subtitle>Arsenal</ion-card-subtitle>
-          </ion-card-header>
-
-          <ion-card-content>
-            El jugador se llama {{ e.nombre }}
-          </ion-card-content>
-          <ion-button fill="clear">Ver mas</ion-button>
-          <ion-button fill="clear">Calificar</ion-button>
-          <ion-fab>
-            <ion-fab-button>
-              <ion-icon :icon="add">Agregar a mis favoritos</ion-icon>
-            </ion-fab-button>
-          </ion-fab>
-        </ion-card>
+        <post-list-item-template :id="e.id" :nombre="e.nombre" />
       </ion-list>
       <ion-input
         v-model="jugador.id"
@@ -44,16 +28,11 @@ import {
   IonInput,
   IonList,
   IonContent,
-  IonCard,
-  IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonFab,
-  IonFabButton,
-  IonIcon,
 } from "@ionic/vue";
 import { add } from "ionicons/icons";
+import PostListItemTemplate from '../components/PostListItemTemplate.vue';
+import postService from '../service/postService.js';
+
 export default {
   components: {
     IonPage,
@@ -61,17 +40,13 @@ export default {
     IonContent,
     IonInput,
     IonList,
-    IonCard,
-    IonCardContent,
-    IonCardHeader,
-    IonCardSubtitle,
-    IonCardTitle,
-    IonFab,
-    IonFabButton,
-    IonIcon,
+    PostListItemTemplate,
   },
   setup() {
       return { add };
+  },
+  async mounted() {
+    console.log(await postService.listAllPosts());
   },
   data() {
     return {
