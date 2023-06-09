@@ -5,7 +5,7 @@
       <ion-list v-for="e in lista" :key="e.id">
         <post-list-item-template :id="e.id" :nombre="e.nombre" />
       </ion-list>
-      <ion-input
+      <!-- <ion-input
         v-model="jugador.id"
         label="Numero"
         placeholder="numero de jugador"
@@ -16,22 +16,18 @@
         placeholder="nombre de jugador"
       ></ion-input>
       <ion-button @click="agregarJugador">Agregar a la lista</ion-button>
-      <ion-button expand="block" @click="irAbout">Ir a About</ion-button>
+      <ion-button expand="block" @click="irAbout">Ir a About</ion-button> -->
+      <!--<ScrollComponent />-->
     </ion-content>
   </ion-page>
 </template>
 
 <script>
-import {
-  IonPage,
-  IonButton,
-  IonInput,
-  IonList,
-  IonContent,
-} from "@ionic/vue";
+import { IonPage, IonButton, IonInput, IonList, IonContent } from "@ionic/vue";
 import { add } from "ionicons/icons";
-import PostListItemTemplate from '../components/PostListItemTemplate.vue';
-import postService from '../service/postService.js';
+import PostListItemTemplate from "../components/PostListItemTemplate.vue";
+import postService from "../service/postService.js";
+//import ScrollComponent from "../components/ScrollComponent.vue";
 
 export default {
   components: {
@@ -41,9 +37,10 @@ export default {
     IonInput,
     IonList,
     PostListItemTemplate,
+    //ScrollComponent
   },
   setup() {
-      return { add };
+    return { add };
   },
   async mounted() {
     console.log(await postService.listAllPosts());
@@ -53,7 +50,19 @@ export default {
       lista: [
         { id: 1, nombre: "Filioll" },
         { id: 5, nombre: "Gallego" },
-        { id: 9, nombre: "Kempes" },
+        { id: 9, nombre: "Kempes" }, 
+        {id: 10, nombre: "Julian"},
+        {id:89, nombre: "Halaand"},
+        {id: 10, nombre: "Julian"},
+        {id:89, nombre: "Halaand"},
+        {id: 10, nombre: "Julian"},
+        {id:89, nombre: "Halaand"},
+        {id: 10, nombre: "Julian"},
+        {id:89, nombre: "Halaand"},
+        {id: 10, nombre: "Julian"},
+        {id:89, nombre: "Halaand"},
+        {id: 10, nombre: "Julian"},
+        {id:89, nombre: "Halaand"}
       ],
       jugador: {},
     };

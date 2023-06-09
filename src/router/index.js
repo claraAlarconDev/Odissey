@@ -6,6 +6,7 @@ import DetailView from '../views/DetailView.vue'
 import LoginView from '../views/LoginView.vue'
 import LogoutView from '../views/LogoutView.vue'
 import ConfigView from '../views/ConfigView.vue'
+import IndividualPostView from "../views/IndividualPostView.vue"
 
 import { useLoginStore } from '../stores/login'
 
@@ -43,6 +44,12 @@ const router = createRouter({
       name: 'config',
       component: ConfigView,
       meta: { RequireAuth: true }
+    }, 
+    {
+      path: '/post/:id',
+      name: 'indpost',
+      component: IndividualPostView,
+      meta: {RequireAuth: true}
     },
     {
       path: '/detail/:id',

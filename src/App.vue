@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from "vue-router";
 import { IonApp, IonHeader, IonRouterOutlet, IonTabBar, IonTabButton, IonLabel, IonIcon, IonFooter, IonTabs } from "@ionic/vue";
 import { storeToRefs } from "pinia";
 import { useLoginStore } from "./stores/login";
-import { personOutline, homeOutline, informationOutline } from 'ionicons/icons'
+import { personOutline, homeOutline, informationOutline, readerOutline, logOutOutline} from 'ionicons/icons'
 
 export default {
   components: { IonApp, IonHeader, IonRouterOutlet, IonTabBar, IonTabButton, IonLabel, IonIcon, IonFooter, IonTabs },
@@ -17,7 +17,9 @@ export default {
     return {
       personOutline,
       homeOutline,
-      informationOutline
+      informationOutline,
+      readerOutline,
+      logOutOutline
     };
   }
 };
@@ -25,18 +27,9 @@ export default {
 
 <template>
   <ion-app>
-    <ion-header>
+    <!--<ion-header>
       <RouterLink v-if="isLogin" to="/logout">LogOut |</RouterLink>
-    </ion-header>
-    <!-- <ion-header>
-      <RouterLink to="/">Home |</RouterLink>
-      <RouterLink to="/about">About |</RouterLink>
-      <RouterLink v-if="isLogin" to="/system">System |</RouterLink>
-      <RouterLink v-if="isLogin && hasPermissions('config')" to="/config">Config |</RouterLink>
-      <RouterLink v-if="!isLogin" to="/login">Login |</RouterLink>
-      <RouterLink v-if="isLogin" to="/logout">Logout</RouterLink>
-      Usuario: {{ user.email }}
-    </ion-header> -->
+    </ion-header>-->
     <ion-router-outlet />
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
@@ -45,13 +38,21 @@ export default {
           <ion-icon :icon="informationOutline"></ion-icon>
           <ion-label>About us</ion-label>
         </ion-tab-button>
-        <ion-tab-button v-if="isLogin" tab="home" href="/home">
+        <ion-tab-button v-if="!isLogin" tab="home" href="/home">
           <ion-icon :icon="homeOutline"></ion-icon>
           <ion-label>Home</ion-label>
         </ion-tab-button>
-        <ion-tab-button tab="login" href="/login">
+        <ion-tab-button v-if="!isLogin" tab="login" href="/login">
           <ion-icon :icon="personOutline"></ion-icon>
           <ion-label>LogIn</ion-label>
+        </ion-tab-button>
+        <ion-tab-button v-if="isLogin" tab="posts" href="/post">
+           <ion-icon :icon="readerOutline"></ion-icon>
+           <ion-label>Posts</ion-label>
+        </ion-tab-button>
+        <ion-tab-button v-if="isLogin" tab="logout" href="/logout">
+           <ion-icon :icon="logOutOutline"></ion-icon>
+           <ion-label>LogOut</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
