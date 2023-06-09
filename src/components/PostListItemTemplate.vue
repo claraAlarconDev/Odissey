@@ -1,10 +1,6 @@
 <script>
 import {
-  IonPage,
   IonButton,
-  IonInput,
-  IonList,
-  IonContent,
   IonCard,
   IonCardContent,
   IonCardHeader,
@@ -33,7 +29,12 @@ export default {
   data() {
     return {}
   },
-  props: ['id','nombre'],
+  props: ['id','nombre'], 
+  methods: {
+    async verPost(){
+      this.$router.push(`/post/${this.id}`)
+    }
+  }
 }
 </script>
 
@@ -47,7 +48,7 @@ export default {
     <ion-card-content>
       El jugador se llama {{ nombre }}
     </ion-card-content>
-    <ion-button fill="clear">Ver mas</ion-button>
+    <ion-button fill="clear" @click="verPost()" >Ver mas</ion-button>
     <ion-button fill="clear">Calificar</ion-button>
     <ion-fab>
       <ion-fab-button>
