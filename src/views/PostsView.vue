@@ -10,16 +10,11 @@
 </template>
 
 <script>
-import {
-  IonPage,
-  IonButton,
-  IonInput,
-  IonList,
-  IonContent,
-} from "@ionic/vue";
+import { IonPage, IonButton, IonInput, IonList, IonContent } from "@ionic/vue";
 import { add } from "ionicons/icons";
-import PostListItemTemplate from '../components/PostListItemTemplate.vue';
-import postService from '../service/postService.js';
+import PostListItemTemplate from "../components/PostListItemTemplate.vue";
+import postService from "../service/postService.js";
+//import ScrollComponent from "../components/ScrollComponent.vue";
 
 export default {
   components: {
@@ -29,9 +24,10 @@ export default {
     IonInput,
     IonList,
     PostListItemTemplate,
+    //ScrollComponent
   },
   setup() {
-      return { add };
+    return { add };
   },
   data() {
     return {

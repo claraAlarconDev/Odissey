@@ -1,6 +1,5 @@
 <script>
 import {
-  IonPage,
   IonButton,
   IonCard,
   IonCardContent,
@@ -31,7 +30,12 @@ export default {
   data() {
     return {}
   },
-  props: ['id','titulo','descripcion', 'parrafo'],
+ props: ['id','titulo','descripcion', 'parrafo'],
+  methods: {
+    async verPost(){
+      this.$router.push(`/post/${this.id}`)
+    }
+  }
 }
 </script>
 
@@ -42,7 +46,7 @@ export default {
       <ion-card-subtitle> {{ descripcion }}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content> {{ parrafo }}</ion-card-content>
-    <ion-button href= "/" fill="clear">Ver mas</ion-button>
+    <ion-button fill="clear" @click="verPost()">Ver mas</ion-button>
     <ion-button fill="clear">Calificar</ion-button>
       <ion-button>
         <ion-icon :icon="thumbsUp"></ion-icon>
