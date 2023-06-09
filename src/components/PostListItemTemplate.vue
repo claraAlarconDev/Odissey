@@ -2,9 +2,6 @@
 import {
   IonPage,
   IonButton,
-  IonInput,
-  IonList,
-  IonContent,
   IonCard,
   IonCardContent,
   IonCardHeader,
@@ -14,9 +11,10 @@ import {
   IonFabButton,
   IonIcon,
 } from "@ionic/vue";
-import { add } from "ionicons/icons";
+import { thumbsUp } from "ionicons/icons";
 export default {
   components: {
+    IonPage,
     IonButton,
     IonCard,
     IonCardContent,
@@ -28,31 +26,26 @@ export default {
     IonIcon,
   },
   setup() {
-      return { add };
+      return { thumbsUp };
   },
   data() {
     return {}
   },
-  props: ['id','nombre'],
+  props: ['id','titulo','descripcion', 'parrafo'],
 }
 </script>
 
 <template>
-  <ion-card>
+    <ion-card color="light">
     <ion-card-header>
-      <ion-card-title>{{ id }}</ion-card-title>
-      <ion-card-subtitle>Arsenal</ion-card-subtitle>
+      <ion-card-title>{{ titulo }}</ion-card-title>
+      <ion-card-subtitle> {{ descripcion }}</ion-card-subtitle>
     </ion-card-header>
-
-    <ion-card-content>
-      El jugador se llama {{ nombre }}
-    </ion-card-content>
-    <ion-button fill="clear">Ver mas</ion-button>
+    <ion-card-content> {{ parrafo }}</ion-card-content>
+    <ion-button href= "/" fill="clear">Ver mas</ion-button>
     <ion-button fill="clear">Calificar</ion-button>
-    <ion-fab>
-      <ion-fab-button>
-        <ion-icon :icon="add">Agregar a mis favoritos</ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+      <ion-button>
+        <ion-icon :icon="thumbsUp"></ion-icon>
+      </ion-button>
   </ion-card>
 </template>

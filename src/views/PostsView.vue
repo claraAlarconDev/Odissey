@@ -2,21 +2,9 @@
   <ion-page>
     <ion-content>
       <h2>Posts</h2>
-      <ion-list v-for="e in lista" :key="e.id">
-        <post-list-item-template :id="e.id" :nombre="e.nombre" />
+      <ion-list v-for="p in listaPosts" :key="p.titulo">
+        <post-list-item-template :id="p.id" :titulo="p.titulo" :descripcion="p.descripcion" :parrafo="p.parrafo"/>
       </ion-list>
-      <ion-input
-        v-model="jugador.id"
-        label="Numero"
-        placeholder="numero de jugador"
-      ></ion-input>
-      <ion-input
-        v-model="jugador.nombre"
-        label="Nombre"
-        placeholder="nombre de jugador"
-      ></ion-input>
-      <ion-button @click="agregarJugador">Agregar a la lista</ion-button>
-      <ion-button expand="block" @click="irAbout">Ir a About</ion-button>
     </ion-content>
   </ion-page>
 </template>
@@ -45,26 +33,22 @@ export default {
   setup() {
       return { add };
   },
-  async mounted() {
-    console.log(await postService.listAllPosts());
-  },
   data() {
     return {
-      lista: [
-        { id: 1, nombre: "Filioll" },
-        { id: 5, nombre: "Gallego" },
-        { id: 9, nombre: "Kempes" },
-      ],
-      jugador: {},
+      listaPosts: [],
+      post: {},
     };
+  },
+  async mounted() {
+    this.listaPosts = await postService.listAllPosts();
   },
   methods: {
     irAbout() {
       this.$router.push("/about");
     },
-    agregarJugador() {
-      this.lista.push({ ...this.jugador });
-      this.jugador = {};
+    agregarPost() {
+      this.lista.push({ ...this.post });
+      this.post = {};
     },
   },
 };
