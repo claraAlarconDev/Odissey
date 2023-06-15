@@ -26,9 +26,7 @@ export default {
         try {
             console.log(idPost);
             const response = await apiClient.get(`/post/${idPost}`)
-            console.log(response.data);
-            return response.data
-            
+            return response.data.result
         } catch (error) {
             throw "Error de conexion"
         }
@@ -36,7 +34,7 @@ export default {
     async listAllPosts() {
         try {
             const response = await apiClient.get("/post")
-            return response.data
+            return response.data.result
         } catch (error) {
             throw "Error de conexion"
         }
@@ -44,7 +42,7 @@ export default {
     async listAllPostsByUserId(userId) {
         try {
             const response = await apiClient.get(`/post/users/${userId}`)
-            return response.data
+            return response.data.result
         } catch (error) {
             throw "Error de conexion"
         }

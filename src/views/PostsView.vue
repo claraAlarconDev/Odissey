@@ -35,6 +35,7 @@ export default {
   },
   async mounted() {
     this.listaPosts = await postService.listAllPosts();
+    console.log(this.listaPosts)
   },
   methods: {
     async irAbout() {
