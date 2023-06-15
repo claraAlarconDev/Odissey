@@ -38,7 +38,6 @@ import {
 import { add } from "ionicons/icons";
 import PostListItemTemplate from "../components/PostListItemTemplate.vue";
 import postService from "../service/postService.js";
-//import ScrollComponent from "../components/ScrollComponent.vue";
 
 export default {
   components: {
@@ -50,7 +49,7 @@ export default {
     PostListItemTemplate,
     IonHeader,
     IonSearchbar,
-    IonToolbar,
+    IonToolbar
   },
   setup() {
     return { add };
@@ -68,8 +67,8 @@ export default {
     console.log(this.listaPosts);
   },
   methods: {
-    irAbout() {
-      this.$router.push("/about");
+    async irAbout() {
+      await this.$router.push("/about");
     },
     agregarPost() {
       //this.listaPosts.push({ ...this.post });

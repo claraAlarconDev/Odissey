@@ -24,6 +24,7 @@ export default {
     },
     async getPostById(idPost) {
         try {
+            console.log(idPost);
             const response = await apiClient.get(`/post/${idPost}`)
             return response.data.result
         } catch (error) {
