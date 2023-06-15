@@ -14,7 +14,6 @@ import { IonPage, IonButton, IonInput, IonList, IonContent } from "@ionic/vue";
 import { add } from "ionicons/icons";
 import PostListItemTemplate from "../components/PostListItemTemplate.vue";
 import postService from "../service/postService.js";
-//import ScrollComponent from "../components/ScrollComponent.vue";
 
 export default {
   components: {
@@ -23,8 +22,7 @@ export default {
     IonContent,
     IonInput,
     IonList,
-    PostListItemTemplate,
-    //ScrollComponent
+    PostListItemTemplate
   },
   setup() {
     return { add };
@@ -39,13 +37,13 @@ export default {
     this.listaPosts = await postService.listAllPosts();
   },
   methods: {
-    irAbout() {
-      this.$router.push("/about");
+    async irAbout() {
+      await this.$router.push("/about");
     },
-    agregarPost() {
+    /*agregarPost() {
       this.lista.push({ ...this.post });
       this.post = {};
-    },
+    },*/
   },
 };
 </script>
