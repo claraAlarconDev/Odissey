@@ -4,7 +4,7 @@
     <ion-content>
       <ion-scroll direction="xy">
         <img src="img\odissey 4.jpeg">
-        <div class="body">
+        <div class="about-text">
           The story
           The Odyssey does not follow a linear chronology. The reader begins in the middle of the tale, learning about
           previous events only through Odysseus’s retelling. The first four books set the scene in Ithaca. Penelope,
@@ -49,16 +49,17 @@ export default {
 .titulo {
   color: #3880ff;
   font-family: "Courier New", Courier, monospace;
-  font-size: 200%;
+  font-size: 150%;
   margin: 5% auto;
 }
 
-
-
-.body {
+.about-text {
   color: black;
   font-family: "Courier New", Courier, monospace;
   font-size: 100%;
-}</style>
+  width: 90%;
+  margin-left: 5%;
+}
+</style>
 
 
