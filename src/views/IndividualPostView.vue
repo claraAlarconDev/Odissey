@@ -1,7 +1,7 @@
 <template>
   <ion-page>
-     <h1>Detalle</h1>
-     <h1>{{this.post.id}} {{this.post.titulo}} {{this.post.descripcion}} {{this.post.parrafo}}</h1>
+     <h1 class="textos">{{this.post.titulo}}</h1>
+     <h1>{{this.post.id}} {{this.post.descripcion}} {{this.post.parrafo}}</h1>
   </ion-page>
 </template>
 
@@ -16,8 +16,7 @@ export default {
       this.post =  await postService.getPostById(this.$route.params.id);
       console.log(this.post)
     },
-    methods:{
-      
+    methods:{  
     },
     setup(){
         return{};

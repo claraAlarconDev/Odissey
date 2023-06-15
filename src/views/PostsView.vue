@@ -1,16 +1,40 @@
 <template>
+  <ion-header>
+    <ion-toolbar>
+      <ion-searchbar
+        show-cancel-button="never"
+        :debounce="1000"
+        @ionInput="handleInput($event)"
+      ></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+
   <ion-page>
     <ion-content>
       <h2>Posts</h2>
       <ion-list v-for="p in listaPosts" :key="p.titulo">
-        <post-list-item-template :id="p.id" :titulo="p.titulo" :descripcion="p.descripcion" :parrafo="p.parrafo"/>
+        <post-list-item-template
+          :id="p.id"
+          :titulo="p.titulo"
+          :descripcion="p.descripcion"
+          :parrafo="p.parrafo"
+        />
       </ion-list>
     </ion-content>
   </ion-page>
 </template>
 
 <script>
-import { IonPage, IonButton, IonInput, IonList, IonContent } from "@ionic/vue";
+import {
+  IonPage,
+  IonButton,
+  IonInput,
+  IonList,
+  IonContent,
+  IonHeader,
+  IonSearchbar,
+  IonToolbar,
+} from "@ionic/vue";
 import { add } from "ionicons/icons";
 import PostListItemTemplate from "../components/PostListItemTemplate.vue";
 import postService from "../service/postService.js";
@@ -22,29 +46,38 @@ export default {
     IonContent,
     IonInput,
     IonList,
-    PostListItemTemplate
+    PostListItemTemplate,
+    IonHeader,
+    IonSearchbar,
+    IonToolbar
   },
   setup() {
     return { add };
   },
   data() {
     return {
+      allPosts:[],
       listaPosts: [],
       post: {},
     };
   },
   async mounted() {
-    this.listaPosts = await postService.listAllPosts();
-    console.log(this.listaPosts)
+    this.allPosts = await postService.listAllPosts();
+    this.listaPosts= this.allPosts;
+    console.log(this.listaPosts);
   },
   methods: {
     async irAbout() {
       await this.$router.push("/about");
     },
-    /*agregarPost() {
-      this.lista.push({ ...this.post });
-      this.post = {};
-    },*/
+    agregarPost() {
+      //this.listaPosts.push({ ...this.post });
+      //this.post = {};
+    },
+    handleInput(event) {
+        const query = event.target.value.toLowerCase();
+        this.listaPosts = this.allPosts.filter((p) => p.titulo.toLowerCase().indexOf(query) > -1);
+    },
   },
 };
 </script>

@@ -1,29 +1,16 @@
 <template>
   <ion-page>
+    <h2 class="textos">LogIn</h2>
     <ion-content>
       <ion-list>
-        <ion-item>
-          <ion-card-title class="textos">LogIn</ion-card-title>
-        </ion-item>
-
         <div>
           <ion-img src="..\..\img\odissey 2.jpeg" class="img"></ion-img>
         </div>
-
-        <ion-item>
-          <ion-card-title class="textos">EMAIL</ion-card-title>
-        </ion-item>
-
         <div>
-          <ion-input v-model="usuario.email" placeholder="enter your email" type="email" style="text-align: center;background-color: lightgray;"></ion-input>
+          <ion-input class="text-area" v-model="usuario.email" label="Enter your email" label-placement="floating" fill="outline" type="email" style="text-align:center"/>
         </div>
-
-        <ion-item>
-          <ion-card-title class="textos">PASSWORD</ion-card-title>
-        </ion-item>
-
         <div>
-          <ion-input v-model="usuario.passw"  placeholder="enter your password" type="password" style="text-align: center;background-color: lightgray;"></ion-input>
+          <ion-input class="text-area" v-model="usuario.passw" label="Enter your password" label-placement="floating" fill="outline" type="password" style="text-align:center"/>
         </div>
       </ion-list>
       <div>
@@ -41,9 +28,10 @@ import {
   IonItem,
   IonList,
   IonContent,
-  IonCardTitle,
+  IonCardTitle
 } from "@ionic/vue";
 import { useLoginStore } from "../stores/login";
+import userService from "../service/userService.js";
 export default {
   components: {
     IonPage,
@@ -52,11 +40,11 @@ export default {
     IonItem,
     IonList,
     IonContent,
-    IonCardTitle,
+    IonCardTitle
   },
   data() {
     return {
-      usuario: { email: "", passw: "" },
+      usuario: { userEmail: "", userPassword: "" },
     };
   },
   setup() {
@@ -66,6 +54,9 @@ export default {
   },
   methods: {
     logear() {
+    //this.usuario = userService.login(this.usuario);
+    //console.log(this.usuario)
+  
       // consultar api por usuario
       // por hoy hardcodeamos
       if (
@@ -99,9 +90,18 @@ export default {
 
 .boton {
   width: 90%;
+  margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
   font-size: 150%;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.text-area {
+  width: 90%;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
   font-family: "Courier New", Courier, monospace;
 }
 
