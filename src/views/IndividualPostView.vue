@@ -2,7 +2,7 @@
   <ion-page>
     <!--{{this.$route.params.id}}-->
      <h1>Detalle</h1>
-     {{this.$route.params.id}}
+     id {{this.$route.params.id}}
   </ion-page>
 </template>
 
@@ -14,7 +14,7 @@ export default {
         IonPage
     },
     async mounted(){
-      //this.post =  JSON.parse(await postService.getPostById(this.$route.params.id));
+      this.post = await postService.getPostById(this.$route.params.id);
     },
     methods:{
       

@@ -13,7 +13,6 @@ import {
 import { thumbsUp } from "ionicons/icons";
 export default {
   components: {
-    IonPage,
     IonButton,
     IonCard,
     IonCardContent,
@@ -33,7 +32,8 @@ export default {
  props: ['id','titulo','descripcion', 'parrafo'],
   methods: {
     async verPost(){
-      this.$router.push(`/post/${this.id}`)
+      console.log("id de post "+this.id);
+     await this.$router.push(`/post/${this.id}`)
     }
   }
 }
