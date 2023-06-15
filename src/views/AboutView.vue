@@ -53,9 +53,7 @@ export default {
   margin: 5% auto;
 }
 
-.img {
 
-}
 
 .body {
   color: black;
