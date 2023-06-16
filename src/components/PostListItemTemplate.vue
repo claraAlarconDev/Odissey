@@ -1,6 +1,6 @@
 <script>
 import {
-  IonPage,
+  //IonPage,
   IonButton,
   IonCard,
   IonCardContent,

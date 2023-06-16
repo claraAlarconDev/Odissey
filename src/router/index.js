@@ -2,10 +2,8 @@ import { createRouter, createWebHistory } from '@ionic/vue-router'
 import HomeView from '../views/HomeView.vue'
 import PostsView from '../views/PostsView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
-import DetailView from '../views/DetailView.vue'
 import LoginView from '../views/LoginView.vue'
 import LogoutView from '../views/LogoutView.vue'
-import ConfigView from '../views/ConfigView.vue'
 import IndividualPostView from "../views/IndividualPostView.vue"
 
 import { useLoginStore } from '../stores/login'
@@ -40,21 +38,10 @@ const router = createRouter({
       meta: { RequireAuth: true }
     },
     {
-      path: '/config',
-      name: 'config',
-      component: ConfigView,
-      meta: { RequireAuth: true }
-    }, 
-    {
       path: '/post/:id',
       name: 'indpost',
       component: IndividualPostView,
       meta: {RequireAuth: true}
-    },
-    {
-      path: '/detail/:id',
-      name: 'detail',
-      component: DetailView
     },
     {
       path: '/:pathMatch(.*)*',
@@ -81,4 +68,4 @@ router.beforeEach((to, from, next) => {
   }
 })
 
-export default router
+export default router;
