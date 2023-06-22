@@ -11,7 +11,7 @@ export const useLoginStore = defineStore('login', {
     actions: {
         logout() {
             this.isLogin = false
-            this.user = { email: '', permissions: [] }
+            this.user = { email: '', permissions: []}
         },
         login(user) {
             this.isLogin = true

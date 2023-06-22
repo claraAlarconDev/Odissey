@@ -20,7 +20,7 @@ import postService from '../service/postService.js';
 export default defineComponent({
     data(){
         return {
-            post: {}
+            post: {titulo: "", descripcion: "", parrafo: "", userEmail: ""}
         }
     },
    components: {
@@ -34,7 +34,7 @@ export default defineComponent({
     async crearPost(){
         const post = {...this.post}
         console.log(post);
-        await postService.createPost(post)
+        //await postService.createPost(post)
     },
     validateEmail(email) {
         return email.match(

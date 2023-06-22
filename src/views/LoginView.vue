@@ -84,7 +84,7 @@ export default {
         this.usuario.passw == "123456"
       ) {
         this.login({ email: this.usuario.email, permissions: ["config"] });
-        this.$router.push("/");
+        this.$router.push("/post");
       } else {
         alert("Credenciales erroneas");
       }
