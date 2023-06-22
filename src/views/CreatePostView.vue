@@ -6,7 +6,6 @@
             <ion-input class="text-area"  fill="outline" style="text-align:center" v-model="post.titulo" placeholder="Ingresa el titulo "> </ion-input>
             <ion-input class="text-area"  fill="outline" style="text-align:center" v-model="post.descripcion" placeholder="Ingresa la descripción"> </ion-input>
             <ion-input  class="text-area"  fill="outline" style="text-align:center"  v-model="post.parrafo" placeholder= "Ingresa el parrafo"> </ion-input>
-            <ion-input ref="input" helper-text="Enter a valid email" error-text="Invalid email" @ionInput="validate" @ionBlur="markTouched" class="text-area" fill="outline" type="email" style="text-align:center" v-model="post.userEmail" placeholder="Ingresa tu email"> </ion-input>
 
             <ion-button  class="boton" @click="crearPost" > Crear Post!</ion-button>
         </ion-content>
@@ -17,10 +16,11 @@
 import {IonPage, IonContent, IonButton, IonInput, IonTitle} from '@ionic/vue';
 import { defineComponent } from 'vue';
 import postService from '../service/postService.js';
+import { useLoginStore } from "../stores/login";
 export default defineComponent({
     data(){
         return {
-            post: {titulo: "", descripcion: "", parrafo: "", userEmail: ""}
+            post: {titulo: "", descripcion: "", parrafo: "", userEmail: useLoginStore().getUserEmail}
         }
     },
    components: {
@@ -32,32 +32,12 @@ export default defineComponent({
    },
    methods: {
     async crearPost(){
-        const post = {...this.post}
-        console.log(post);
-        await postService.createPost(post)
-    },
-    validateEmail(email) {
-        return email.match(
-          /^(?=.{1,254}$)(?=.{1,64}@)[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
-        );
-      },
-
-      validate(ev) {
-        const value = ev.target.value;
-
-        this.$refs.input.$el.classList.remove('ion-valid');
-        this.$refs.input.$el.classList.remove('ion-invalid');
-
-        if (value === '') return;
-
-        this.validateEmail(value)
-          ? this.$refs.input.$el.classList.add('ion-valid')
-          : this.$refs.input.$el.classList.add('ion-invalid');
-      },
-
-      markTouched() {
-        this.$refs.input.$el.classList.add('ion-touched');
-      },
+      const post = {...this.post}
+      console.log(this.post)
+      await postService.createPost(post)
+      this.post = {titulo: "", descripcion: "", parrafo: "", userEmail: useLoginStore().getUserEmail}
+      this.$router.push("/post");
+    }
    }
 
 })
