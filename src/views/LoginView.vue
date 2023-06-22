@@ -1,7 +1,8 @@
 <template>
   <ion-page>
-    <h2 class="textos">LogIn</h2>
     <ion-content>
+    <h2 class="textos">LogIn</h2>
+    
       <ion-list>
         <div>
           <ion-img src="..\..\img\odissey 2.jpeg" class="img"></ion-img>
@@ -88,6 +89,7 @@ export default {
   font-family: "Courier New", Courier, monospace;
   font-size: 150%;
   margin: 5% auto;
+  text-align: center;
 }
 
 .boton {

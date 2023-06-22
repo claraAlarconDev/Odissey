@@ -19,6 +19,7 @@ import {
   informationOutline,
   readerOutline,
   logOutOutline,
+  addCircleOutline
 } from "ionicons/icons";
 
 export default {
@@ -46,6 +47,7 @@ export default {
       informationOutline,
       readerOutline,
       logOutOutline,
+      addCircleOutline
     };
   },
 };
@@ -76,6 +78,10 @@ export default {
         <ion-tab-button v-if="isLogin" tab="logout" href="/logout">
           <ion-icon :icon="logOutOutline"></ion-icon>
           <ion-label>LogOut</ion-label>
+        </ion-tab-button>
+        <ion-tab-button v-if="isLogin" tab="createpost" href="/post/create/">
+          <ion-icon :icon="addCircleOutline"></ion-icon>
+          <ion-label>Crear Post</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>

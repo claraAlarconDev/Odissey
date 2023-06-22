@@ -10,7 +10,6 @@
     </ion-toolbar>
   </ion-header>
     <ion-content>
-      <h2>Posts</h2>
       <ion-list v-for="p in listaPosts" :key="p.titulo">
         <post-list-item-template
           :id="p.id"
@@ -21,6 +20,7 @@
       </ion-list>
     </ion-content>
   </ion-page>
+
 </template>
 
 <script>
@@ -48,21 +48,21 @@ export default {
     PostListItemTemplate,
     IonHeader,
     IonSearchbar,
-    IonToolbar
+    IonToolbar,
   },
   setup() {
     return { add };
   },
   data() {
     return {
-      allPosts:[],
+      allPosts: [],
       listaPosts: [],
       post: {},
     };
   },
   async mounted() {
     this.allPosts = await postService.listAllPosts();
-    this.listaPosts= this.allPosts;
+    this.listaPosts = this.allPosts;
     console.log(this.listaPosts);
   },
   methods: {
@@ -74,34 +74,15 @@ export default {
       //this.post = {};
     },
     handleInput(event) {
-        const query = event.target.value.toLowerCase();
-        this.listaPosts = this.allPosts.filter((p) => p.titulo.toLowerCase().indexOf(query) > -1);
+      const query = event.target.value.toLowerCase();
+      this.listaPosts = this.allPosts.filter(
+        (p) => p.titulo.toLowerCase().indexOf(query) > -1
+      );
     },
   },
 };
 </script>
 
 <style>
-/*
-ion-button {
-  --background: #250e4b;
-  --background-hover: #9ce0be;
-  --background-activated: #88f4be;
-  --background-focused: #88f4be;
 
-  --color: blue;
-
-  --border-radius: 0;
-  --border-color: #000;
-  --border-style: solid;
-  --border-width: 1px;
-
-  --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
-
-  --ripple-color: deeppink;
-
-  --padding-top: 10px;
-  --padding-bottom: 10px;
-}
-*/
 </style>
