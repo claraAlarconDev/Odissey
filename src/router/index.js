@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import PostsView from '../views/PostsView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 import LoginView from '../views/LoginView.vue'
+import RegistryView from '../views/RegistryView.vue'
 import LogoutView from '../views/LogoutView.vue'
 import IndividualPostView from "../views/IndividualPostView.vue"
 import CreatePostView from "../views/CreatePostView.vue"
@@ -28,6 +29,11 @@ const router = createRouter({
       component: LoginView
     },
     {
+      path: '/registry',
+      name: 'registry',
+      component: RegistryView
+    },
+    {
       path: '/logout',
       name: 'logout',
       component: LogoutView
@@ -42,14 +48,14 @@ const router = createRouter({
       path: '/post/:id',
       name: 'indpost',
       component: IndividualPostView,
-      meta: {RequireAuth: true}
+      meta: { RequireAuth: true }
     },
     {
       path: '/post/create/',
       name: 'createpost',
       component: CreatePostView,
-      meta: {RequireAuth: true}
-    } ,
+      meta: { RequireAuth: true }
+    },
     {
       path: '/:pathMatch(.*)*',
       name: "NotFound",
