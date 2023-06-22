@@ -3,7 +3,7 @@ import apiClient from './apiClient'
 export default {
     async createPost(elemento) {
         try {
-            await apiClient.post("/post", elemento)
+            await apiClient.post("/post/", elemento)
         } catch (error) {
             throw "Error no se ha podido publicar el post"
         }

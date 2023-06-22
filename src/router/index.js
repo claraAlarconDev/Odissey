@@ -5,6 +5,7 @@ import NotFoundView from '../views/NotFoundView.vue'
 import LoginView from '../views/LoginView.vue'
 import LogoutView from '../views/LogoutView.vue'
 import IndividualPostView from "../views/IndividualPostView.vue"
+import CreatePostView from "../views/CreatePostView.vue"
 
 import { useLoginStore } from '../stores/login'
 
@@ -43,6 +44,12 @@ const router = createRouter({
       component: IndividualPostView,
       meta: {RequireAuth: true}
     },
+    {
+      path: '/post/create/',
+      name: 'createpost',
+      component: CreatePostView,
+      meta: {RequireAuth: true}
+    } ,
     {
       path: '/:pathMatch(.*)*',
       name: "NotFound",
