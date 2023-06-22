@@ -17,6 +17,9 @@
       <div>
         <ion-button @click="logear" class="boton"> LOGIN </ion-button>
       </div>
+      <div>
+        <ion-button @click="registry" class="boton"> REGISTRARSE </ion-button>
+      </div>
     </ion-content>
   </ion-page>
 </template>
@@ -56,27 +59,18 @@ export default {
     return { login };
   },
   methods: {
-    logear() {
-    //this.usuario = userService.login(this.usuario);
-    //console.log(this.usuario)
-  
-      // consultar api por usuario
-      // por hoy hardcodeamos
-      if (
-        this.usuario.email == "1" &&//"usuario@test.com" &&
-        this.usuario.passw == "1"//"123456"
-      ) {
+    async logear() {
+      try{
+        await userService.login({userPassword: this.usuario.passw, userEmail: this.usuario.email})
         this.login({ email: this.usuario.email, permissions: [] });
+        this.usuario = { userEmail: "", userPassword: "" }
         this.$router.push("/post");
-      } else if (
-        this.usuario.email == "admin@test.com" &&
-        this.usuario.passw == "123456"
-      ) {
-        this.login({ email: this.usuario.email, permissions: ["config"] });
-        this.$router.push("/");
-      } else {
-        alert("Credenciales erroneas");
+      } catch (error) {
+        alert(error);
       }
+    },
+    async registry() {
+      this.$router.push("/registry");
     },
   },
 };
