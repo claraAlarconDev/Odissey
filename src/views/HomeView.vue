@@ -15,7 +15,7 @@ export default {
 
 <template>
   <ion-page class="inactive-justify">
-    <h1 class="title">Welcome to LogIn</h1>
+    <h1 class="title">Welcome to Odissey</h1>
     <img src="img\odissey 3.jpeg" class="img_home">
   </ion-page>
 </template>

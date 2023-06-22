@@ -39,15 +39,18 @@ export default {
       //isAdmin: this.hasPermissions(["config"])
     };
   },
-  props: ["id", "titulo", "descripcion", "parrafo"],
+  props: ["id", "titulo", "descripcion", "parrafo", "puedeBorrar"],
   methods: {
     async verPost() {
       console.log("id de post " + this.id);
       await this.$router.push(`/post/${this.id}`);
     },
     async deletePost() {
-      //await this.$router.push(`/post`)
-      await postService.deletePostById(this.id).then(this.$router.push(`/post`));
+      if(this.puedeBorrar){
+        await postService.deletePostById(this.id).then(this.$router.push(`/post`));
+      } else {
+        alert("solo puedes borrar posts creados por ti")
+      }
     }
   },
 };
@@ -61,7 +64,7 @@ export default {
     <ion-card-content>{{ descripcion }}</ion-card-content>
     <ion-button fill="clear" @click="verPost()">Ver mas</ion-button>
     <ion-button fill="clear">Calificar</ion-button>
-    <ion-button fill="clear"  @click="deletePost()" > Borrar </ion-button>
+    <ion-button fill="clear"  @click="deletePost()" v-if="puedeBorrar"  > Borrar </ion-button>
     <ion-button>
       <ion-icon :icon="thumbsUp"></ion-icon>
     </ion-button>

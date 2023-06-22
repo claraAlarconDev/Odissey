@@ -1,7 +1,7 @@
 <template>
   <ion-page>
     <ion-content>
-    <h1>Post individual</h1>
+    <h1 class="title">Post individual</h1>
      <h1 class="textos">{{this.post.titulo}}</h1>
      <h1>{{this.post.id}} {{this.post.descripcion}} {{this.post.parrafo}}</h1>
     </ion-content>
