@@ -1,15 +1,14 @@
 <template>
   <ion-page>
-    <ion-header>
-      <ion-toolbar>
-          <ion-searchbar
-            show-cancel-button="never"
-            :debounce="1000"
-            @ionInput="handleInput($event)"
-          ></ion-searchbar>
-      </ion-toolbar>
-    </ion-header>
-
+  <ion-header>
+    <ion-toolbar>
+      <ion-searchbar
+        show-cancel-button="never"
+        :debounce="1000"
+        @ionInput="handleInput($event)"
+      ></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
     <ion-content>
       <ion-list v-for="p in listaPosts" :key="p.titulo">
         <post-list-item-template
@@ -85,26 +84,5 @@ export default {
 </script>
 
 <style>
-/*
-ion-button {
-  --background: #250e4b;
-  --background-hover: #9ce0be;
-  --background-activated: #88f4be;
-  --background-focused: #88f4be;
 
-  --color: blue;
-
-  --border-radius: 0;
-  --border-color: #000;
-  --border-style: solid;
-  --border-width: 1px;
-
-  --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
-
-  --ripple-color: deeppink;
-
-  --padding-top: 10px;
-  --padding-bottom: 10px;
-}
-*/
 </style>
