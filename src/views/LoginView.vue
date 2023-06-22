@@ -1,21 +1,40 @@
 <template>
   <ion-page>
     <ion-content>
-    <h2 class="textos">LogIn</h2>
-    
+      <h2 class="textos">LogIn</h2>
+
       <ion-list>
         <div>
           <ion-img src="..\..\img\odissey 2.jpeg" class="img"></ion-img>
         </div>
         <div>
-          <ion-input class="text-area" v-model="usuario.email" label="Enter your email" label-placement="floating" fill="outline" type="email" style="text-align:center"/>
+          <ion-input
+            class="text-area"
+            v-model="usuario.email"
+            label="Enter your email"
+            label-placement="floating"
+            fill="outline"
+            type="email"
+            style="text-align: center"
+          />
         </div>
         <div>
-          <ion-input class="text-area" v-model="usuario.passw" label="Enter your password" label-placement="floating" fill="outline" type="password" style="text-align:center"/>
+          <ion-input
+            class="text-area"
+            v-model="usuario.passw"
+            label="Enter your password"
+            label-placement="floating"
+            fill="outline"
+            type="password"
+            style="text-align: center"
+          />
         </div>
       </ion-list>
       <div>
         <ion-button @click="logear" class="boton"> LOGIN </ion-button>
+      </div>
+      <div>
+        <ion-button @click="registry" class="boton"> REGISTRARSE </ion-button>
       </div>
     </ion-content>
   </ion-page>
@@ -30,7 +49,7 @@ import {
   IonList,
   IonContent,
   IonCardTitle,
-  IonImg
+  IonImg,
 } from "@ionic/vue";
 import { useLoginStore } from "../stores/login";
 import userService from "../service/userService.js";
@@ -43,13 +62,13 @@ export default {
     IonList,
     IonContent,
     IonCardTitle,
-    IonImg
+    IonImg,
   },
   data() {
     return {
       usuario: { userEmail: "", userPassword: "" },
       usuario1: {},
-      listUsers: []
+      listUsers: [],
     };
   },
   setup() {
@@ -59,42 +78,26 @@ export default {
   },
   methods: {
     async logear() {
-    //this.usuario1 = await userService.login(this.usuario);
-    //console.log(this.usuario1)
-    /*this.listUsers = await userService.getAllUsers();
-    console.log(this.listUsers);
-    for (let index = 0; index < this.listUsers.length; index++) {
-      const element = this.listUsers[index];
-      console.log(element);
-      if(element.userEmail === this.usuario.userEmail && element.userPassword === this.usuario.userPassword){
-        this.login({ email: this.usuario.userEmail, permissions: [] });
-        this.$router.push("/post");
-      }
-    }*/
-      // consultar api por usuario
-      // por hoy hardcodeamos
-      if (
-        this.usuario.email == "1" &&//"usuario@test.com" &&
-        this.usuario.passw == "1"//"123456"
-      ) {
+      try {
+        await userService.login({
+          userPassword: this.usuario.passw,
+          userEmail: this.usuario.email,
+        });
         this.login({ email: this.usuario.email, permissions: [] });
+        this.usuario = { userEmail: "", userPassword: "" };
         this.$router.push("/post");
-      } else if (
-        this.usuario.email == "admin@test.com" &&
-        this.usuario.passw == "123456"
-      ) {
-        this.login({ email: this.usuario.email, permissions: ["config"] });
-        this.$router.push("/post");
-      } else {
-        alert("Credenciales erroneas");
+      } catch (error) {
+        alert(error)
       }
+    },
+    async registry() {
+      this.$router.push("/registry");
     },
   },
 };
 </script>
 
 <style>
-
 .textos {
   color: #3880ff;
   font-family: "Courier New", Courier, monospace;
@@ -124,6 +127,6 @@ export default {
   margin: 5% auto;
   width: 90%;
   max-width: 400px;
-  alt: centered
+  alt: centered;
 }
 </style>
