@@ -16,6 +16,7 @@
           :titulo="p.titulo"
           :descripcion="p.descripcion"
           :parrafo="p.parrafo"
+          :puedeBorrar="p.userEmail == this.userEmail"
         />
       </ion-list>
     </ion-content>
@@ -37,6 +38,7 @@ import {
 import { add } from "ionicons/icons";
 import PostListItemTemplate from "../components/PostListItemTemplate.vue";
 import postService from "../service/postService.js";
+import { useLoginStore } from "../stores/login";
 
 export default {
   components: {
@@ -58,20 +60,20 @@ export default {
       allPosts: [],
       listaPosts: [],
       post: {},
+      userEmail: useLoginStore().getUserEmail,
     };
   },
-  async mounted() {
+  async beforeUpdate() {
     this.allPosts = await postService.listAllPosts();
     this.listaPosts = this.allPosts;
-    console.log(this.listaPosts);
+  },
+   async mounted() {
+    this.allPosts = await postService.listAllPosts();
+    this.listaPosts = this.allPosts;
   },
   methods: {
     async irAbout() {
       await this.$router.push("/about");
-    },
-    agregarPost() {
-      //this.listaPosts.push({ ...this.post });
-      //this.post = {};
     },
     handleInput(event) {
       const query = event.target.value.toLowerCase();
