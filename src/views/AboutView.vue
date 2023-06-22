@@ -42,28 +42,10 @@
 </template>
 
 <script>
-import {
-  IonPage,
-  IonContent,
-  IonTitle,
-  IonToolbar,
-  IonMenu,
-  IonMenuButton,
-  IonItem,
-  IonLabel,
-  IonHeader,
-  IonList,
-} from "@ionic/vue";
+import { IonPage,IonContent } from '@ionic/vue'
 export default {
-  components: { IonPage, IonContent,  IonTitle,
-  IonToolbar,
-  IonMenu,
-  IonMenuButton,
-  IonItem,
-  IonLabel,
-  IonHeader,
-  IonList,},
-};
+  components: { IonPage, IonContent }
+}
 </script>
 
 <style>
