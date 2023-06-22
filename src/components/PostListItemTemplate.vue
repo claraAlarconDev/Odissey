@@ -1,6 +1,6 @@
 <script>
 import {
-  IonPage,
+  //IonPage,
   IonButton,
   IonCard,
   IonCardContent,
@@ -12,6 +12,7 @@ import {
   IonIcon,
 } from "@ionic/vue";
 import { thumbsUp } from "ionicons/icons";
+import postService from '../service/postService';
 export default {
   components: {
     IonButton,
@@ -35,6 +36,10 @@ export default {
     async verPost(){
       console.log("id de post "+this.id);
      await this.$router.push(`/post/${this.id}`)
+    },
+    async deletePost(){
+      //await this.$router.push(`/post`)
+      await postService.deletePostById(this.id);
     }
   }
 }
@@ -44,11 +49,11 @@ export default {
     <ion-card color="light">
     <ion-card-header>
       <ion-card-title>{{ titulo }}</ion-card-title>
-      <ion-card-subtitle> {{ descripcion }}</ion-card-subtitle>
     </ion-card-header>
-    <ion-card-content> {{ parrafo }}</ion-card-content>
+    <ion-card-content>{{ descripcion }}</ion-card-content>
     <ion-button fill="clear" @click="verPost()">Ver mas</ion-button>
     <ion-button fill="clear">Calificar</ion-button>
+    <ion-button fill="clear" @click="deletePost()" > Borrar </ion-button>
       <ion-button>
         <ion-icon :icon="thumbsUp"></ion-icon>
       </ion-button>

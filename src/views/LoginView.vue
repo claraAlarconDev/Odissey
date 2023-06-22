@@ -1,7 +1,8 @@
 <template>
   <ion-page>
-    <h2 class="textos">LogIn</h2>
     <ion-content>
+    <h2 class="textos">LogIn</h2>
+    
       <ion-list>
         <div>
           <ion-img src="..\..\img\odissey 2.jpeg" class="img"></ion-img>
@@ -28,7 +29,8 @@ import {
   IonItem,
   IonList,
   IonContent,
-  IonCardTitle
+  IonCardTitle,
+  IonImg
 } from "@ionic/vue";
 import { useLoginStore } from "../stores/login";
 import userService from "../service/userService.js";
@@ -40,7 +42,8 @@ export default {
     IonItem,
     IonList,
     IonContent,
-    IonCardTitle
+    IonCardTitle,
+    IonImg
   },
   data() {
     return {
@@ -86,6 +89,7 @@ export default {
   font-family: "Courier New", Courier, monospace;
   font-size: 150%;
   margin: 5% auto;
+  text-align: center;
 }
 
 .boton {

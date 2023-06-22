@@ -1,17 +1,16 @@
 <template>
-  <ion-header>
-    <ion-toolbar>
-      <ion-searchbar
-        show-cancel-button="never"
-        :debounce="1000"
-        @ionInput="handleInput($event)"
-      ></ion-searchbar>
-    </ion-toolbar>
-  </ion-header>
-
   <ion-page>
+    <ion-header>
+      <ion-toolbar>
+          <ion-searchbar
+            show-cancel-button="never"
+            :debounce="1000"
+            @ionInput="handleInput($event)"
+          ></ion-searchbar>
+      </ion-toolbar>
+    </ion-header>
+
     <ion-content>
-      <h2>Posts</h2>
       <ion-list v-for="p in listaPosts" :key="p.titulo">
         <post-list-item-template
           :id="p.id"
@@ -22,6 +21,7 @@
       </ion-list>
     </ion-content>
   </ion-page>
+
 </template>
 
 <script>
@@ -49,21 +49,21 @@ export default {
     PostListItemTemplate,
     IonHeader,
     IonSearchbar,
-    IonToolbar
+    IonToolbar,
   },
   setup() {
     return { add };
   },
   data() {
     return {
-      allPosts:[],
+      allPosts: [],
       listaPosts: [],
       post: {},
     };
   },
   async mounted() {
     this.allPosts = await postService.listAllPosts();
-    this.listaPosts= this.allPosts;
+    this.listaPosts = this.allPosts;
     console.log(this.listaPosts);
   },
   methods: {
@@ -75,8 +75,10 @@ export default {
       //this.post = {};
     },
     handleInput(event) {
-        const query = event.target.value.toLowerCase();
-        this.listaPosts = this.allPosts.filter((p) => p.titulo.toLowerCase().indexOf(query) > -1);
+      const query = event.target.value.toLowerCase();
+      this.listaPosts = this.allPosts.filter(
+        (p) => p.titulo.toLowerCase().indexOf(query) > -1
+      );
     },
   },
 };

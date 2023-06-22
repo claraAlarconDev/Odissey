@@ -13,7 +13,6 @@
 import { defineComponent } from "vue";
 import {IonInfiniteScroll,
         IonInfiniteScrollContent,
-        IonInfiniteCustomEvent,
         IonContent} from '@ionic/vue';
 export default {
      components:{
