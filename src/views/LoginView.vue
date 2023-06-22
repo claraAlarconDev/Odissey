@@ -48,6 +48,8 @@ export default {
   data() {
     return {
       usuario: { userEmail: "", userPassword: "" },
+      usuario1: {},
+      listUsers: []
     };
   },
   setup() {
@@ -56,10 +58,19 @@ export default {
     return { login };
   },
   methods: {
-    logear() {
-    //this.usuario = userService.login(this.usuario);
-    //console.log(this.usuario)
-  
+    async logear() {
+    //this.usuario1 = await userService.login(this.usuario);
+    //console.log(this.usuario1)
+    /*this.listUsers = await userService.getAllUsers();
+    console.log(this.listUsers);
+    for (let index = 0; index < this.listUsers.length; index++) {
+      const element = this.listUsers[index];
+      console.log(element);
+      if(element.userEmail === this.usuario.userEmail && element.userPassword === this.usuario.userPassword){
+        this.login({ email: this.usuario.userEmail, permissions: [] });
+        this.$router.push("/post");
+      }
+    }*/
       // consultar api por usuario
       // por hoy hardcodeamos
       if (

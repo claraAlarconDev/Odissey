@@ -1,6 +1,15 @@
 import apiClient from './apiClient'
 
 export default {
+  async getAllUsers() {
+        try {
+            const response = await apiClient.get("/user/")
+            return response.data.result;
+        } catch (error) {
+            throw "Error de conexion"
+        }
+    },
+
     async login(elemento) {
         try {
             const response = await apiClient.post("/login", elemento)
