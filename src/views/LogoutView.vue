@@ -1,8 +1,8 @@
 <template>
   <ion-page>
     <ion-content>
-      <h2>Logout page</h2>
-      <ion-button @click="unloger"> Log out </ion-button>
+      <h2 class="textos">¡Adios! nos vemos luego</h2>
+      <ion-button @click="unloger" class="boton"> Log out </ion-button>
     </ion-content>  
   </ion-page>
 </template>
@@ -27,5 +27,22 @@ export default {
 </script>
 
 <style>
+.boton {
+  width: 90%;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 150%;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.textos {
+  color: #3880ff;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 150%;
+  margin: 5% auto;
+  text-align: center;
+  align-content: center;
+}
 
 </style>

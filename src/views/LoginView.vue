@@ -1,17 +1,33 @@
 <template>
   <ion-page>
     <ion-content>
-    <h2 class="textos">LogIn</h2>
-    
+      <h2 class="textos">LogIn</h2>
+
       <ion-list>
         <div>
           <ion-img src="..\..\img\odissey 2.jpeg" class="img"></ion-img>
         </div>
         <div>
-          <ion-input class="text-area" v-model="usuario.email" label="Enter your email" label-placement="floating" fill="outline" type="email" style="text-align:center"/>
+          <ion-input
+            class="text-area"
+            v-model="usuario.email"
+            label="Enter your email"
+            label-placement="floating"
+            fill="outline"
+            type="email"
+            style="text-align: center"
+          />
         </div>
         <div>
-          <ion-input class="text-area" v-model="usuario.passw" label="Enter your password" label-placement="floating" fill="outline" type="password" style="text-align:center"/>
+          <ion-input
+            class="text-area"
+            v-model="usuario.passw"
+            label="Enter your password"
+            label-placement="floating"
+            fill="outline"
+            type="password"
+            style="text-align: center"
+          />
         </div>
       </ion-list>
       <div>
@@ -33,7 +49,7 @@ import {
   IonList,
   IonContent,
   IonCardTitle,
-  IonImg
+  IonImg,
 } from "@ionic/vue";
 import { useLoginStore } from "../stores/login";
 import userService from "../service/userService.js";
@@ -46,11 +62,13 @@ export default {
     IonList,
     IonContent,
     IonCardTitle,
-    IonImg
+    IonImg,
   },
   data() {
     return {
       usuario: { userEmail: "", userPassword: "" },
+      usuario1: {},
+      listUsers: [],
     };
   },
   setup() {
@@ -60,13 +78,16 @@ export default {
   },
   methods: {
     async logear() {
-      try{
-        await userService.login({userPassword: this.usuario.passw, userEmail: this.usuario.email})
+      try {
+        await userService.login({
+          userPassword: this.usuario.passw,
+          userEmail: this.usuario.email,
+        });
         this.login({ email: this.usuario.email, permissions: [] });
-        this.usuario = { userEmail: "", userPassword: "" }
+        this.usuario = { userEmail: "", userPassword: "" };
         this.$router.push("/post");
       } catch (error) {
-        alert(error);
+        alert(error)
       }
     },
     async registry() {
@@ -77,7 +98,6 @@ export default {
 </script>
 
 <style>
-
 .textos {
   color: #3880ff;
   font-family: "Courier New", Courier, monospace;
@@ -107,6 +127,6 @@ export default {
   margin: 5% auto;
   width: 90%;
   max-width: 400px;
-  alt: centered
+  alt: centered;
 }
 </style>
