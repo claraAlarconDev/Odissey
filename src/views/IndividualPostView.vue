@@ -1,16 +1,20 @@
 <template>
   <ion-page>
+    <ion-content>
+    <h1>Post individual</h1>
      <h1 class="textos">{{this.post.titulo}}</h1>
      <h1>{{this.post.id}} {{this.post.descripcion}} {{this.post.parrafo}}</h1>
+    </ion-content>
   </ion-page>
 </template>
 
 <script>
 import postService from "../service/postService.js";
-import {IonPage} from "@ionic/vue";
+import {IonPage, IonContent} from "@ionic/vue";
 export default {
     components:{
-        IonPage
+        IonPage, 
+        IonContent
     },
     async mounted(){
       this.post =  await postService.getPostById(this.$route.params.id);

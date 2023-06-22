@@ -1,7 +1,7 @@
 <template>
   <ion-page>
-    <h2 class="titulo">¿Qué es Odissey?</h2>
     <ion-content>
+      <h2 class="titulo">¿Qué es Odissey?</h2>
       <ion-scroll direction="xy">
         <img src="img\odissey 4.jpeg">
         <div class="about-text">
@@ -39,9 +39,9 @@
 </template>
 
 <script>
-import { IonPage } from '@ionic/vue'
+import { IonPage,IonContent } from '@ionic/vue'
 export default {
-  components: { IonPage }
+  components: { IonPage, IonContent }
 }
 </script>
 

@@ -1,4 +1,5 @@
 <template>
+  <ion-page>
   <ion-header>
     <ion-toolbar>
       <ion-searchbar
@@ -8,8 +9,6 @@
       ></ion-searchbar>
     </ion-toolbar>
   </ion-header>
-
-  <ion-page>
     <ion-content>
       <h2>Posts</h2>
       <ion-list v-for="p in listaPosts" :key="p.titulo">

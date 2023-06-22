@@ -28,7 +28,8 @@ import {
   IonItem,
   IonList,
   IonContent,
-  IonCardTitle
+  IonCardTitle,
+  IonImg
 } from "@ionic/vue";
 import { useLoginStore } from "../stores/login";
 import userService from "../service/userService.js";
@@ -40,7 +41,8 @@ export default {
     IonItem,
     IonList,
     IonContent,
-    IonCardTitle
+    IonCardTitle,
+    IonImg
   },
   data() {
     return {
